@@ -10,21 +10,22 @@
 ############################
 
 # Name of website
-title: My website
+title: Home
 
 # Your name to show in the footer
-author: Some Person
+author: Athletica Team
 
 ###############################################
 # --- List of links in the navigation bar --- #
 ###############################################
 
 navbar-links:
-  About Me: "aboutme"
+  About: "aboutme"
+  How to: "howto"
   Resources:
-    - Beautiful Jekyll: "https://beautifuljekyll.com"
-    - Learn markdown: "https://www.markdowntutorial.com/"
-  Author's home: "https://deanattali.com"
+    - FAQ: "2024-02-01-FAQ"
+    - Garmin Connect IQ App: "https://apps.garmin.com/apps/c9a93545-7db0-4a1b-b955-21db19edbf9d?tid=0"
+    - Athletica's home: "http://www.athletica.ai/"
 
 ################
 # --- Logo --- #
@@ -50,21 +51,21 @@ round-avatar: true
 # You can change the order that they show up on the page by changing the order here.
 # Uncomment the links you want to show and add your information to each one.
 social-network-links:
-  email: "someone@example.com"
-  rss: true  # remove this line if you don't want to show an RSS link at the bottom
-  facebook: deanattali
-  github: daattali
-  twitter: daattali
-  patreon: DeanAttali
-  youtube: "@daattali"
-  whatsapp: 15551212
+  email: "andrea@athletica.ai"
+#  rss: true  # remove this line if you don't want to show an RSS link at the bottom
+  facebook: AthleticaAI
+#  github: daattali
+  twitter: Athletica_AI
+#  patreon: DeanAttali
+  youtube: "@athletica4785"
+#  whatsapp: 15551212
 #  medium: yourname
 #  reddit: yourname or r/yoursubreddit
-#  linkedin: daattali
+# linkedin: athletica-ai
 #  xing: yourname
 #  stackoverflow: "3943160/daattali"
 #  snapchat: deanat78
-#  instagram: deanat78
+instagram: athletica_ai
 #  spotify: yourname
 #  telephone: +14159998888
 #  steam: deanat78
@@ -100,7 +101,7 @@ share-links-active:
 
 # How to display the link to your website in the footer
 # Remove this if you don't want a link in the footer
-url-pretty: "MyWebsite.com"
+url-pretty: "Home"
 
 # Add the website title to the title of every page
 title-on-all-pages: true
@@ -262,7 +263,7 @@ timezone: "America/Toronto"
 markdown: kramdown
 highlighter: rouge
 permalink: /:year-:month-:day-:title/
-paginate: 5
+paginate: 8
 
 kramdown:
   input: GFM

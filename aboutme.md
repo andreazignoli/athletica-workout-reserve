@@ -1,16 +1,29 @@
 ---
 layout: page
-title: About me
-subtitle: Why you'd want to go on a date with me
+title: About
+subtitle: Athletica Workout Reserve
 ---
 
-My name is Inigo Montoya. I have the following qualities:
+Athletica introduces the Workout Reserve, a groundbreaking tool designed to quantify an athlete's remaining margin relative to their historical performance. This innovative approach integrates complex physiological factors into a single, user-friendly metric, enabling athletes and coaches to optimize training prescriptions for enhanced performance.
 
-- I rock a great mustache
-- I'm extremely loyal to my family
+### Understanding the Athletica Workout Reserve
 
-What else do you need?
+The Athletica Workout Reserve offers a comprehensive view of an athlete's capacity to perform work over different durations. By analyzing past performance data, the Athletica Workout Reserve provides real-time insights into how much effort an athlete can sustain, facilitating more informed training decisions and better management of training loads.
 
-### My story
+### Key Benefits of the Athletica Workout Reserve
 
-To be honest, I'm having some trouble remembering right now, so why don't you just watch [my movie](https://en.wikipedia.org/wiki/The_Princess_Bride_%28film%29) and it will answer **all** your questions.
+- **Personalized Training:** Tailors workouts based on individual performance profiles, ensuring optimal training intensity and volume.
+- **Real-Time Feedback:** Offers immediate insights during training sessions, helping athletes adjust efforts to maximize effectiveness.
+- **Integration with Athletica AI:** Seamlessly combines with Athletica's AI engine and the Workout Wizard feature to deliver customized training plans.
+
+---
+
+# Learn More
+
+* A collection of [blog posts](/) about the Athletica Workout Reserve.
+
+* How to install the Athletica Workout Reserve [Garmin Connect IQ]({{ "../howto/" | relative_url }}) app and enjoy the real-time experience. 
+
+* Listen to this podcast episode about how to [optimizing training with the Athletica Workout Reserve](https://athletica.ai/the-athletes-compass-podcast/from-lab-to-athlete-optimizing-training-with-workout-reserve/).
+
+
