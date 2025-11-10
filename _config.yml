@@ -22,6 +22,10 @@ author: Athletica Team
 navbar-links:
   About: "aboutme"
   How to: "howto"
+  API:
+    - Documentation: "api/guide"
+    - Terms: "api/terms"
+    - Privacy: "api/privacy"
   Resources:
     - FAQ: "2024-02-01-FAQ"
     - Garmin Connect: "https://apps.garmin.com/apps/c9a93545-7db0-4a1b-b955-21db19edbf9d?tid=0"
