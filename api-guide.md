@@ -254,6 +254,7 @@ Calculate Workout Reserve during a training session.
 - **0.0-0.2**: Very low reserve - near maximum capacity
 
 **Limiting Tau (indicates limiting system):**
+- **6-12 seconds**: Very short sprints / explosive power (team sports)
 - **12-60 seconds**: Neuromuscular/sprint power systems
 - **120-600 seconds**: Anaerobic capacity systems
 - **1200-3600 seconds**: Aerobic/endurance systems
