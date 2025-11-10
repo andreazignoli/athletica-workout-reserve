@@ -352,10 +352,12 @@ Assumptions:
 - Time to onboard 500 athletes: ~16 days
 
 **Use cases:**
-- Personal training studios (50-200 athletes)
-- Small team sports organizations
-- Boutique fitness apps
-- Research projects
+- **Endurance sports coaching**: Cycling, running, triathlon coaches (lower frequency, 3-5 sessions/week)
+- **Personal training studios**: 50-200 athletes with varied schedules
+- **Small team sports**: Local clubs, youth teams
+- **Boutique fitness apps**: Niche markets, specialized training
+- **Research projects**: Academic studies, training methodology validation
+- **Beta testing**: Pilot programs before full deployment
 
 #### **Professional Tier: $199/month (10,000 req/day)**
 
@@ -369,10 +371,13 @@ Assumptions:
 - Time to onboard 5,000 athletes: ~16 days
 
 **Use cases:**
-- Multi-location training facilities
-- College/university athletic programs
-- Growing fitness platforms
-- Professional sports organizations (multiple teams)
+- **Multi-sport training platforms**: Combining endurance (cycling, running) with team sports
+- **College/university athletic programs**: Multiple teams across various sports
+- **Professional sports organizations**: Several teams, multiple squads
+- **Growing fitness platforms**: 1,000-5,000 users, production environments
+- **Corporate wellness programs**: Enterprise employee fitness tracking
+- **Virtual racing platforms**: Online cycling/running competitions with WR leaderboards
+- **Fitness wearable integrations**: Apps integrating with Garmin, Wahoo, Zwift
 
 #### **Enterprise Tier: $799/month (100,000 req/day)**
 
@@ -386,10 +391,15 @@ Assumptions:
 - Time to onboard 50,000 athletes: ~16 days
 
 **Use cases:**
-- Large fitness platforms (Peloton-scale)
-- National sports federations
-- Military/tactical athlete programs
-- Enterprise wellness platforms
+- **Large fitness platforms**: Peloton-scale, 10,000+ active users
+- **National sports federations**: Olympic committees, national teams across all sports
+- **Military/tactical athlete programs**: Special forces, military fitness assessment systems
+- **Enterprise wellness platforms**: Fortune 500 employee health programs
+- **Live sports broadcasting**: Real-time WR display during competitions, TV overlays
+- **Gaming/esports**: Real-time WR integration in fitness gaming (Zwift, Rouvy, virtual races)
+- **Streaming platforms**: Twitch/YouTube fitness streamers with live WR metrics
+- **Multi-tenant SaaS**: White-label fitness solutions serving multiple sub-clients
+- **High-frequency trading sports**: Daily/multiple daily competitions with instant WR feedback
 
 ### Real-World Example Calculation
 
