@@ -260,6 +260,318 @@ Calculate Workout Reserve during a training session.
 
 ---
 
+## Implementation Patterns
+
+### Understanding the Workflow
+
+To compute WR for an athlete during a new session, you need:
+
+1. **Build athlete profile** (Endpoint 1): Process 3-6 weeks of historical sessions
+2. **Establish baseline** (Endpoint 2): Calculate athlete's performance ceiling
+3. **Monitor real-time WR** (Endpoint 3): Track reserve during new sessions
+
+**Key insight:** After processing historical data once, you can store the `grand_max_ewms` profile and reuse it for days/weeks, only updating periodically when athletes achieve breakthrough performances.
+
+### Pattern 1: Initial Setup (One-Time)
+
+When onboarding a new athlete with 6 weeks of training history (30 sessions):
+
+```
+Day 1: Initial backfill
+├─ Endpoint 1: 30 calls (one per historical session)
+├─ Endpoint 2: 1 call (compute grand_max_ewms from all 30 sessions)
+└─ Store grand_max_ewms in your database
+
+Total: 31 API calls (one-time cost)
+```
+
+### Pattern 2: Daily Operations (Efficient)
+
+**Option A: Store profiles locally (recommended)**
+
+```
+Each training day:
+├─ Endpoint 3: 1 call (monitor WR using stored grand_max_ewms)
+└─ Store new session data locally
+
+Weekly profile update:
+├─ Endpoint 1: 7 calls (process last week's sessions)
+├─ Endpoint 2: 1 call (update grand_max_ewms with recent sessions)
+└─ Update stored grand_max_ewms
+
+Daily cost: 1 call per athlete session
+Weekly overhead: 8 calls per athlete
+```
+
+**Option B: Always recompute (inefficient, not recommended)**
+
+```
+Each training day:
+├─ Endpoint 1: 30 calls (reprocess entire history)
+├─ Endpoint 2: 1 call (recompute baseline)
+└─ Endpoint 3: 1 call (monitor WR)
+
+Daily cost: 32 calls per athlete session (32x more expensive!)
+```
+
+### Pattern 3: Profile Update Strategy
+
+**Conservative (monthly updates):**
+- Update `grand_max_ewms` once per month
+- Cost: ~8 API calls per athlete per month
+- Best for: Stable athletes, off-season training
+
+**Standard (weekly updates):**
+- Update `grand_max_ewms` once per week
+- Cost: ~8 API calls per athlete per week
+- Best for: Regular training, most use cases
+
+**Aggressive (daily updates):**
+- Update `grand_max_ewms` after every session
+- Cost: 2 additional calls per session (Endpoint 1 + 2)
+- Best for: Peak training periods, rapid adaptation tracking
+
+### Capacity Planning by Tier
+
+Assumptions:
+- Athletes train 5 days/week average (260 sessions/year)
+- Weekly profile updates (8 calls/athlete/week)
+- 1 WR monitoring call per session
+- Initial backfill: 31 calls per athlete (one-time)
+
+#### **Starter Tier: $49/month (1,000 req/day)**
+
+**Steady state capacity:**
+- Daily budget: 1,000 calls
+- Calls per athlete per day: 5/7 sessions × 1 call = 0.71 calls/day + (8/7 weekly overhead) = ~1.85 calls/day
+- **Capacity: ~500 active athletes**
+
+**Initial backfill capacity:**
+- Backfill cost: 31 calls per athlete
+- Can onboard: ~32 athletes per day
+- Time to onboard 500 athletes: ~16 days
+
+**Use cases:**
+- Personal training studios (50-200 athletes)
+- Small team sports organizations
+- Boutique fitness apps
+- Research projects
+
+#### **Professional Tier: $199/month (10,000 req/day)**
+
+**Steady state capacity:**
+- Daily budget: 10,000 calls
+- Calls per athlete per day: ~1.85 calls/day
+- **Capacity: ~5,000 active athletes**
+
+**Initial backfill capacity:**
+- Can onboard: ~320 athletes per day
+- Time to onboard 5,000 athletes: ~16 days
+
+**Use cases:**
+- Multi-location training facilities
+- College/university athletic programs
+- Growing fitness platforms
+- Professional sports organizations (multiple teams)
+
+#### **Enterprise Tier: $799/month (100,000 req/day)**
+
+**Steady state capacity:**
+- Daily budget: 100,000 calls
+- Calls per athlete per day: ~1.85 calls/day
+- **Capacity: ~50,000 active athletes**
+
+**Initial backfill capacity:**
+- Can onboard: ~3,200 athletes per day
+- Time to onboard 50,000 athletes: ~16 days
+
+**Use cases:**
+- Large fitness platforms (Peloton-scale)
+- National sports federations
+- Military/tactical athlete programs
+- Enterprise wellness platforms
+
+### Real-World Example Calculation
+
+**Scenario:** Training platform with 1,000 athletes, 70% train 5x/week, 30% train 3x/week
+
+**Daily API calls:**
+```
+Active sessions per day:
+- 700 athletes × 5 sessions/week ÷ 7 days = 500 sessions/day
+- 300 athletes × 3 sessions/week ÷ 7 days = 129 sessions/day
+- Total: 629 sessions/day
+
+WR monitoring (Endpoint 3):
+- 629 calls/day
+
+Weekly profile updates (Endpoints 1+2):
+- 1,000 athletes × 8 calls/week ÷ 7 days = 1,143 calls/day
+
+Total daily calls: 629 + 1,143 = 1,772 calls/day
+```
+
+**Recommended tier:** Professional ($199/month) - uses only 18% of daily quota, room for growth
+
+### Cost Optimization Best Practices
+
+#### 1. **Store Profiles Locally** ✅
+
+```python
+# Store in your database
+athlete_profiles = {
+    "athlete_123": {
+        "grand_max_ewms": {...},
+        "last_updated": "2025-11-01",
+        "sessions_since_update": 5
+    }
+}
+
+# Reuse profile for multiple sessions
+def monitor_session(athlete_id, session_data):
+    profile = athlete_profiles[athlete_id]
+
+    # Use stored profile - only 1 API call!
+    response = requests.post(
+        f"{API_URL}/wr-predict",
+        json={
+            "player_id": athlete_id,
+            "session_id": session_id,
+            "data_points": session_data,
+            "grand_max_ewms": profile["grand_max_ewms"]  # Stored profile
+        }
+    )
+    return response.json()
+```
+
+#### 2. **Batch Profile Updates** ✅
+
+```python
+# Update profiles weekly, not daily
+def update_athlete_profile(athlete_id, last_7_sessions):
+    # Process recent sessions
+    sessions_data = []
+    for session in last_7_sessions:
+        result = call_endpoint_1(session)  # 7 calls
+        sessions_data.append(result)
+
+    # Update baseline with recent + stored old baseline
+    updated_profile = call_endpoint_2(sessions_data)  # 1 call
+
+    # Store updated profile
+    athlete_profiles[athlete_id] = updated_profile
+
+    # Total: 8 calls per athlete per week
+```
+
+#### 3. **Smart Update Triggers** ✅
+
+Only update profiles when needed:
+
+```python
+def should_update_profile(athlete_id):
+    profile = athlete_profiles[athlete_id]
+
+    # Update if:
+    # - More than 7 days since last update
+    days_since = (datetime.now() - profile["last_updated"]).days
+    if days_since >= 7:
+        return True
+
+    # - Accumulated 5+ sessions since last update
+    if profile["sessions_since_update"] >= 5:
+        return True
+
+    # - Start of new training phase (macro cycle change)
+    if training_phase_changed(athlete_id):
+        return True
+
+    # - WR reserve consistently low (athlete may be adapting)
+    # Track recent WR values and update if athlete is pushing limits frequently
+    recent_wr_values = get_recent_wr_values(athlete_id, last_n_sessions=5)
+    if recent_wr_values and all(wr < 0.3 for wr in recent_wr_values):
+        return True  # Athlete pushing hard, likely adapting - update baseline
+
+    return False
+
+# After each session, increment counter
+def after_session(athlete_id, wr_reserve_values):
+    profile = athlete_profiles[athlete_id]
+    profile["sessions_since_update"] += 1
+
+    # Store WR values for trend analysis
+    store_wr_history(athlete_id, wr_reserve_values)
+
+    # Check if profile update needed
+    if should_update_profile(athlete_id):
+        update_athlete_profile(athlete_id)
+        profile["sessions_since_update"] = 0
+        profile["last_updated"] = datetime.now()
+```
+
+#### 4. **Efficient Backfilling** ✅
+
+When onboarding athletes, spread backfills over time:
+
+```python
+# Onboard 50 athletes per day (1,550 calls)
+# Instead of 500 athletes in one day (15,500 calls - would exceed quota)
+
+def onboard_athletes_gradually(athlete_list, athletes_per_day=50):
+    for i in range(0, len(athlete_list), athletes_per_day):
+        batch = athlete_list[i:i+athletes_per_day]
+
+        for athlete in batch:
+            # Backfill historical data
+            backfill_athlete_history(athlete)  # 31 calls per athlete
+
+        # Wait until next day for next batch
+        schedule_next_batch(date=tomorrow)
+```
+
+### Migration Strategy for Existing Platforms
+
+If you're migrating from another system:
+
+**Phase 1: Pilot (Week 1-2)**
+- Onboard 10-50 athletes
+- Test integration
+- Validate data quality
+- Use Starter tier ($49/month)
+
+**Phase 2: Gradual Rollout (Week 3-8)**
+- Onboard 50-100 athletes per day
+- Monitor API usage
+- Optimize profile update frequency
+- Upgrade to Professional tier when needed
+
+**Phase 3: Full Deployment (Month 3+)**
+- Complete athlete base migration
+- Establish automated profile update workflows
+- Monitor costs and optimize
+- Scale to Enterprise tier if needed
+
+### API Call Cost Estimation Tool
+
+Use this formula to estimate your needs:
+
+```
+Daily API calls =
+    (Active sessions per day × 1) +                    # WR monitoring
+    (Total athletes × 8 ÷ 7) +                         # Weekly profile updates
+    (New athletes per day × 31)                        # Initial backfills
+
+Monthly API calls = Daily API calls × 30
+
+Example:
+- 2,000 athletes, 1,000 daily sessions, 20 new athletes/day
+- Daily: (1,000 × 1) + (2,000 × 8 ÷ 7) + (20 × 31) = 3,907 calls/day
+- Monthly: 3,907 × 30 = 117,210 calls/month
+- Recommended tier: Professional (10K/day quota)
+```
+
+---
+
 ## Complete Example
 
 ### Python
@@ -495,12 +807,139 @@ async function main() {
 
 ---
 
+## Pricing
+
+### Subscription Tiers
+
+#### **Starter - $49/month**
+
+Perfect for small applications, prototypes, and indie developers.
+
+- **Request Volume:** 1,000 requests/day (30K/month)
+- **Rate Limit:** 5 requests/second
+- **Burst Capacity:** 10 requests
+- **Support:** Email support (72-hour response time)
+- **SLA:** Best effort (no uptime guarantee)
+- **Documentation:** Full API documentation and examples
+- **Ideal For:**
+  - Prototyping and development
+  - Small fitness apps (<100 active users)
+  - Personal training platforms
+  - Research projects
+
+#### **Professional - $199/month**
+
+For production applications and growing fitness platforms.
+
+- **Request Volume:** 10,000 requests/day (300K/month)
+- **Rate Limit:** 10 requests/second
+- **Burst Capacity:** 20 requests
+- **Support:** Priority email support (24-hour response time)
+- **SLA:** 99% uptime target
+- **Documentation:** Full API documentation + integration examples
+- **Ideal For:**
+  - Production fitness applications
+  - Training platforms with 100-1,000 active users
+  - Small to medium teams
+  - Commercial training apps
+
+#### **Enterprise - $799/month**
+
+For large-scale platforms and high-volume applications.
+
+- **Request Volume:** 100,000 requests/day (3M/month)
+- **Rate Limit:** 50 requests/second
+- **Burst Capacity:** 100 requests
+- **Support:** Priority email + phone/video support (4-hour response time)
+- **SLA:** 99.5% uptime commitment with service credits
+- **Documentation:** Full documentation + dedicated onboarding session
+- **Additional Features:**
+  - Custom integration assistance
+  - Monthly usage reports and analytics
+  - Dedicated account manager
+  - Algorithm version lock (optional)
+- **Ideal For:**
+  - Large fitness platforms (1,000+ active users)
+  - Professional sports teams and organizations
+  - Enterprise training systems
+  - High-volume commercial applications
+
+#### **Custom/Volume Pricing**
+
+For organizations requiring more than 100K requests/day, contact us for custom enterprise solutions:
+
+- **Dedicated infrastructure** - Isolated deployment for your organization
+- **Custom SLA agreements** - Tailored uptime and response commitments
+- **Volume discounts** - Reduced per-request pricing at scale
+- **White-label options** - Subject to approval and licensing terms
+- **Multi-region deployment** - Deploy in your preferred AWS region
+- **Custom integrations** - Direct database access, webhooks, custom endpoints
+
+**Contact:** andrea@athletica.ai
+
+### Overage Pricing
+
+If you exceed your daily quota:
+- **Starter:** $0.05 per 100 additional requests
+- **Professional:** $0.04 per 100 additional requests
+- **Enterprise:** $0.03 per 100 additional requests
+
+Overage charges are billed monthly. Consider upgrading to a higher tier if you consistently exceed your quota.
+
+### Cost Calculator
+
+Estimate your monthly costs:
+
+| Active Users | Avg. Sessions/User/Week | Est. Daily Requests | Recommended Tier | Monthly Cost |
+|--------------|-------------------------|---------------------|------------------|--------------|
+| 10-50 | 2-3 | 200-500 | Starter | $49 |
+| 50-200 | 3-4 | 500-2,000 | Starter | $49 |
+| 200-500 | 3-5 | 2,000-7,000 | Professional | $199 |
+| 500-2,000 | 4-5 | 7,000-30,000 | Professional | $199 |
+| 2,000-5,000 | 4-6 | 30,000-80,000 | Enterprise | $799 |
+| 5,000+ | 4-6 | 80,000+ | Custom | Contact us |
+
+*Assumes 3 API calls per session (1 session-ewm, periodic grand-max updates, 1 wr-predict)*
+
+### Payment Terms
+
+- **Billing Cycle:** Monthly, billed in advance
+- **Payment Methods:** Invoice (ACH, wire transfer), credit card
+- **Free Trial:** 7-day trial available (Starter tier limits)
+- **Cancellation:** Cancel anytime - no long-term contracts required
+- **Refunds:** No refunds for partial months (see Terms of Service)
+
+### Getting Started
+
+1. **Contact us:** Email andrea@athletica.ai with:
+   - Your organization name
+   - Estimated request volume
+   - Preferred tier
+   - Brief description of your use case
+
+2. **Receive credentials:** You'll receive:
+   - API Gateway URL
+   - Unique API key
+   - Complete documentation
+   - Setup assistance
+
+3. **7-day trial:** Test the API with Starter tier limits for free
+
+4. **Go live:** Upgrade to your selected tier when ready for production
+
+### Fair Use Policy
+
+All tiers include reasonable use expectations:
+- API keys are non-transferable and for single organization use only
+- No reselling of direct API access (see Terms of Service for integration rules)
+- No automated scraping or algorithm reverse engineering attempts
+- Compliance with Terms of Service and Privacy Policy
+
+---
+
 ## Rate Limits
 
-Default limits (may vary based on your plan):
-- **10 requests per second**
-- **Burst capacity: 20 requests**
-- **Daily quota: 10,000 requests**
+Rate limits vary based on your subscription tier (see Pricing above).
 
 If you exceed rate limits, you'll receive:
 ```json
