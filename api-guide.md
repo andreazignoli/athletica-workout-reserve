@@ -819,123 +819,267 @@ async function main() {
 
 ## Pricing
 
-### Subscription Tiers
+**Choose the model that fits your business:**
+- **Direct API Access** → Pay per request volume (best for developers and individual platforms)
+- **Platform Partnership** → Pay per team/athlete (best for sports software providers and resellers)
+- **Strategic Partnership** → Custom arrangements (best for broadcasting, gaming, major platforms)
 
-#### **Starter — $49/month**
+---
 
-Perfect for small applications, prototypes, and indie developers experimenting with the Athletica Workout Reserve API.
+### Option 1: Direct API Access
+*For developers, coaching businesses, and platforms building WR-powered applications*
+
+**Best for:** Individual developers, endurance coaches, research projects, fitness apps
+
+#### **Developer — $49/month**
 
 - **Request Volume:** 1,000 requests/day (≈30K/month)
-- **Rate Limit:** 5 requests/second
-- **Burst Capacity:** 10 requests
-- **Support:** Email support (72-hour response time)
-- **SLA:** Best effort (no uptime guarantee)
-- **Documentation:** Full API documentation and example scripts
+- **Rate Limit:** 5 requests/second, 10 burst
+- **Support:** Email (72h response)
+- **SLA:** Best effort
 - **Ideal For:**
   - Prototyping and testing
-  - Research and validation projects
-  - Small fitness or analytics apps (<100 active users)
+  - Research projects
+  - Small apps (<100 active users)
   - Personal training platforms
+  - Endurance coaching (cycling, running, triathlon)
 
 #### **Professional — $199/month**
 
-For production fitness apps, SaaS platforms, or growing training tools that rely on reliable, daily Workout Reserve calculations.
-
 - **Request Volume:** 10,000 requests/day (≈300K/month)
-- **Rate Limit:** 10 requests/second
-- **Burst Capacity:** 20 requests
-- **Support:** Priority email support (24-hour response time)
-- **SLA:** 99% uptime target
-- **Documentation:** Full API documentation + integration examples and SDK templates
+- **Rate Limit:** 10 requests/second, 20 burst
+- **Support:** Priority email (24h response)
+- **SLA:** 99% uptime
 - **Ideal For:**
   - Commercial training platforms
   - Sports science applications
   - Apps with 100–1,000 active users
-  - Research groups running production studies
+  - Multi-sport coaching platforms
+  - University athletic programs
 
 #### **Enterprise — $799/month**
 
-For large-scale or data-intensive platforms where reliability, integration flexibility, and uptime guarantees are essential.
-
 - **Request Volume:** 100,000 requests/day (≈3M/month)
-- **Rate Limit:** 50 requests/second
-- **Burst Capacity:** 100 requests
-- **Support:** Priority email + scheduled phone or video support (4-hour response time)
-- **SLA:** 99.5% uptime commitment with service credits
-- **Documentation:** Dedicated onboarding + technical integration review
+- **Rate Limit:** 50 requests/second, 100 burst
+- **Support:** Email + phone/video (4h response)
+- **SLA:** 99.5% uptime with service credits
 - **Additional Features:**
   - Custom integration support
-  - Monthly usage and performance analytics
+  - Monthly usage analytics
   - Dedicated account manager
-  - Algorithm version lock (optional, for long-term reproducibility)
+  - Algorithm version pinning
 - **Ideal For:**
-  - Professional sports analytics platforms
-  - Large-scale commercial training systems
-  - Research consortia and enterprise clients
-  - Organizations exceeding 1,000 active users
+  - Large fitness platforms (10K+ users)
+  - National sports federations
+  - Enterprise wellness programs
+  - High-volume commercial applications
 
-#### **Platform Partner License — from $1,500/month**
+**API Capacity Reference:**
+- **Developer**: ~500 active athletes (training 5x/week)
+- **Professional**: ~5,000 active athletes
+- **Enterprise**: ~50,000 active athletes
 
-For strategic partners developing their own platforms or commercial applications powered by Athletica Workout Reserve algorithms. This license allows resale and platform embedding while maintaining Athletica as the backend computational core.
+---
 
-- **Request Volume:** 1M+ requests/month (customized to expected usage)
-- **Rate Limit:** Up to 200 requests/second (configurable)
-- **Burst Capacity:** 1,000 requests
-- **Support:** Priority email + direct Slack or video communication (2-hour response time)
-- **SLA:** 99.9% uptime commitment with service credits
-- **Documentation:** Full integration specs, versioning guidance, and joint technical review
-- **Commercial Features:**
-  - Right to embed and resell WR features within third-party platforms
-  - Co-branded integration ("Powered by Athletica WR")
-  - Private API key with extended usage analytics
-  - Integration sandbox environment for pre-deployment testing
-  - Dedicated onboarding and partnership contact
-  - Optional access to algorithm changelog and version pinning
-- **Ideal For:**
-  - Strategic partners and resellers (e.g., sports tech platforms)
-  - Commercial SaaS and sports analytics companies
-  - Institutions integrating WR into proprietary systems
-  - Teams needing co-development or private hosting options
+### Option 2: Platform Partnership
+*For sports software providers who want to embed and resell WR features*
 
-**Note:** Platform Partner licenses require a separate agreement covering branding, data privacy, and usage rights. Contact andrea@athletica.ai for details.
+**Best for:** Team sports platforms, club management software, multi-tenant SaaS providers
 
-#### **Custom / Volume Pricing**
+**Commercial Rights Included:**
+- ✅ Right to embed WR in your platform
+- ✅ Right to resell WR features to your customers
+- ✅ Co-branded integration ("Powered by Athletica WR")
+- ✅ Unlimited API calls per team (within fair use)
+- ✅ Priority support and technical partnership
 
-For organizations requiring more than 100K requests/day or custom integration solutions.
+#### **Growth Stage — Team-Based Pricing**
 
-- **Dedicated Infrastructure:** Private AWS Lambda and Gateway deployment
-- **Custom SLAs:** Tailored uptime and response time commitments
-- **Volume Discounts:** Reduced per-request cost at large scales
-- **White-Label Options:** Available under separate licensing terms
-- **Multi-Region Deployment:** Choose your preferred AWS region
-- **Custom Integrations:** Webhooks, database sync, or advanced data access
+Perfect for platforms still building customer base. Pay only for active teams using WR features.
 
-**Contact:** andrea@athletica.ai
+**Pricing Structure:**
 
-### Overage Pricing
+| Active Teams | Price per Team per Month | Monthly Total | Annual Prepay Discount |
+|--------------|--------------------------|---------------|------------------------|
+| 1-25 teams | $40/team | $40-1,000 | 10% off ($36/team) |
+| 26-100 teams | $30/team | $780-3,000 | 15% off ($25.50/team) |
+| 101-300 teams | $20/team | $2,020-6,000 | 20% off ($16/team) |
+| 301+ teams | Custom pricing | Contact us | Contact us |
 
-If you exceed your daily quota:
+**What counts as a "team":**
+- Team sports: One squad/roster (e.g., one football club, one basketball team)
+- Endurance: Group of 10-15 athletes under same coach/program
+- Multi-sport clubs: Each sport counts as separate team
 
-- **Starter:** $0.05 per 100 additional requests
+**Includes:**
+- Unlimited API calls per team (fair use: ~100-200 calls/team/month)
+- 20 requests/second, 50 burst
+- Priority email support (24h response)
+- 99% uptime SLA
+- Co-branding rights
+- Monthly usage reports per team
+
+**Example Scenarios:**
+- Platform with 10 football clubs → **$400/month** (or $360/month annual prepay)
+- Platform with 50 clubs → **$1,500/month** (or $1,275/month annual prepay)
+- Platform with 200 clubs → **$4,000/month** (or $3,200/month annual prepay)
+
+#### **Established Platform — Volume Licensing**
+
+For platforms with existing customer base and proven business model.
+
+**Pricing Options:**
+
+**Option A: Annual Platform License**
+- **$15,000-30,000/year** (based on expected volume)
+- Unlimited API calls (fair use policy)
+- Up to 500 active teams
+- 50 req/s, 100 burst
+- Phone/video support (4h response)
+- 99.5% uptime SLA
+- Dedicated account manager
+- Custom integration assistance
+
+**Option B: Per-Athlete Pricing (Multi-Sport Platforms)**
+- **$2-4 per athlete per month** (volume tiered)
+- 1-1,000 athletes: $4/athlete/month
+- 1,001-5,000 athletes: $3/athlete/month
+- 5,001-20,000 athletes: $2/athlete/month
+- 20,001+ athletes: Custom pricing
+
+**Option C: Revenue Share Model**
+- **Base fee: $5,000-10,000/month**
+- **Plus: 5-8% revenue share** on WR-attributed features
+- Best for: Platforms with premium tiers powered by WR
+- Unlimited API calls
+- Full partnership support
+- Aligned growth incentives
+
+**Best for:**
+- Established club management platforms (100+ teams)
+- Multi-sport platforms (1,000+ athletes)
+- White-label SaaS providers
+- League management systems
+
+---
+
+### Option 3: Strategic Partnership
+*For unique applications with massive scale or high-value distribution*
+
+**Best for:** Broadcasting, gaming, streaming platforms, major sports leagues, exclusive partnerships
+
+**Flexible Deal Structures:**
+
+#### **Broadcasting & Media**
+
+- **Per-Event Licensing:** $5,000-20,000 per event (live WR overlays)
+- **Season Licensing:** $50,000-200,000 per season (exclusive league rights)
+- **Best for:** TV networks, streaming platforms, race broadcasts
+
+#### **Gaming & Virtual Platforms**
+
+- **Annual License:** $50,000-150,000/year (unlimited integration)
+- **Revenue Share:** Base fee + 3-5% of premium tier revenue
+- **Best for:** Zwift, Rouvy, virtual racing platforms, fitness gaming
+
+#### **Major Platforms & Leagues**
+
+- **Enterprise License:** $100,000-500,000/year
+- **Equity Partnership:** Strategic investment + exclusive integration
+- **Custom Terms:** White-label, private hosting, co-development
+- **Best for:** Premier League analytics, national federations, Peloton-scale platforms
+
+**All Strategic Partnerships Include:**
+- Unlimited API calls (custom rate limits)
+- 200+ req/s, custom burst
+- Direct Slack/phone support (2h response)
+- 99.9% uptime SLA with credits
+- Dedicated technical team
+- Custom feature development
+- Co-marketing opportunities
+- Exclusive rights (case-by-case)
+
+**Contact:** andrea@athletica.ai for Strategic Partnership discussions
+
+---
+
+### Pricing Decision Guide
+
+**Use this flowchart to choose your option:**
+
+```
+Are you building your own app/platform to use WR directly?
+├─ YES → Option 1: Direct API Access
+│  └─ Choose tier based on athlete volume (see capacity reference)
+│
+└─ NO → Are you a software provider who will resell WR features?
+   ├─ YES → Option 2: Platform Partnership
+   │  ├─ Still building customer base? → Growth Stage (team-based pricing)
+   │  └─ Established with 100+ teams? → Established Platform (annual license or per-athlete)
+   │
+   └─ NO → Do you have unique distribution (broadcasting, gaming, major scale)?
+      └─ YES → Option 3: Strategic Partnership (custom deal)
+```
+
+**Key Differences:**
+
+| Feature | Direct API | Platform Partnership | Strategic Partnership |
+|---------|-----------|---------------------|----------------------|
+| **Resale Rights** | ❌ No | ✅ Yes | ✅ Yes |
+| **Pricing Model** | Per API call | Per team or per athlete | Custom |
+| **Best For** | End-user apps | Software resellers | Unique opportunities |
+| **Entry Point** | $49/month | $400/month (10 teams) | $50K+/year |
+| **Co-branding** | Optional | Required | Negotiable |
+| **Support** | Email | Email + technical partnership | Dedicated team |
+
+---
+
+### Cost Comparison Examples
+
+**Scenario 1: Platform with 50 football clubs (25 players/club = 1,250 athletes)**
+
+- **Option 1 (Direct API):** $799/month (Enterprise tier, enough capacity) — ❌ **NO RESALE RIGHTS**
+- **Option 2 (Platform Partnership - Growth):** $1,500/month (50 teams × $30/team) — ✅ **INCLUDES RESALE RIGHTS**
+- **Option 2 (Platform Partnership - Per-Athlete):** $3,750/month (1,250 athletes × $3/athlete) — ✅ **INCLUDES RESALE RIGHTS**
+
+**Decision:**
+- ❌ **You CANNOT use Direct API if you're reselling WR features** (violates Terms of Service)
+- ✅ **You MUST use Platform Partnership** if you're embedding/reselling WR to customers
+- The $700/month difference ($1,500 vs $799) pays for resale rights + technical partnership
+
+**Why Platform Partnership costs more:**
+- Legal right to resell WR features to your customers
+- Co-branding and partnership status
+- Technical partnership support
+- Protection for both parties as you scale
+
+**Scenario 2: Large multi-sport platform with 10,000 athletes**
+
+- **Option 1 (Direct API):** $799/month (Enterprise tier, enough capacity)
+- **Option 2 (Platform Partnership - Per-Athlete):** $20,000/month (10K athletes × $2/athlete)
+- **Option 2 (Platform Partnership - Annual License):** $30,000/year = $2,500/month
+
+**Recommendation:** If you're **NOT reselling** → Choose Direct API ($799/month)
+If you're **reselling to premium tier** → Choose Revenue Share ($5K base + 5-8% revenue)
+
+**Scenario 3: Broadcasting company wanting live WR during Tour de France**
+
+- **Option 1/2:** Not applicable (broadcasting rights required)
+- **Option 3 (Strategic Partnership):** $50,000-100,000 for exclusive race coverage
+
+**Recommendation:** Strategic Partnership with per-event or season licensing
+
+---
+
+### Overage Pricing (Direct API Only)
+
+If you exceed your daily quota on Direct API plans:
+
+- **Developer:** $0.05 per 100 additional requests
 - **Professional:** $0.04 per 100 additional requests
 - **Enterprise:** $0.03 per 100 additional requests
 
-Overage charges are billed monthly. If you regularly exceed your quota, upgrading to a higher tier is more cost-effective.
-
-### Cost Calculator
-
-Estimate your monthly cost and appropriate plan:
-
-| Active Users | Avg. Sessions/User/Week | Estimated Daily Requests | Recommended Tier | Monthly Cost |
-|--------------|-------------------------|--------------------------|------------------|--------------|
-| 10–50 | 2–3 | 200–500 | Starter | $49 |
-| 50–200 | 3–4 | 500–2,000 | Starter | $49 |
-| 200–500 | 3–5 | 2,000–7,000 | Professional | $199 |
-| 500–2,000 | 4–5 | 7,000–30,000 | Professional | $199 |
-| 2,000–5,000 | 4–6 | 30,000–80,000 | Enterprise | $799 |
-| 5,000+ | 4–6 | 80,000+ | Platform Partner / Custom | Contact us |
-
-*Estimates assume 3 API calls per session (one session EWM, one grand-max update, one WR compute).*
+**Note:** Platform Partnership plans include unlimited API calls per team (fair use policy), so overages don't apply.
 
 ### Payment Terms
 
