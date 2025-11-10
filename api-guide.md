@@ -821,103 +821,217 @@ async function main() {
 
 ### Subscription Tiers
 
-#### **Starter - $49/month**
+#### **Starter — $49/month**
 
-Perfect for small applications, prototypes, and indie developers.
+Perfect for small applications, prototypes, and indie developers experimenting with the Athletica Workout Reserve API.
 
-- **Request Volume:** 1,000 requests/day (30K/month)
+- **Request Volume:** 1,000 requests/day (≈30K/month)
 - **Rate Limit:** 5 requests/second
 - **Burst Capacity:** 10 requests
 - **Support:** Email support (72-hour response time)
 - **SLA:** Best effort (no uptime guarantee)
-- **Documentation:** Full API documentation and examples
+- **Documentation:** Full API documentation and example scripts
 - **Ideal For:**
-  - Prototyping and development
-  - Small fitness apps (<100 active users)
+  - Prototyping and testing
+  - Research and validation projects
+  - Small fitness or analytics apps (<100 active users)
   - Personal training platforms
-  - Research projects
 
-#### **Professional - $199/month**
+#### **Professional — $199/month**
 
-For production applications and growing fitness platforms.
+For production fitness apps, SaaS platforms, or growing training tools that rely on reliable, daily Workout Reserve calculations.
 
-- **Request Volume:** 10,000 requests/day (300K/month)
+- **Request Volume:** 10,000 requests/day (≈300K/month)
 - **Rate Limit:** 10 requests/second
 - **Burst Capacity:** 20 requests
 - **Support:** Priority email support (24-hour response time)
 - **SLA:** 99% uptime target
-- **Documentation:** Full API documentation + integration examples
+- **Documentation:** Full API documentation + integration examples and SDK templates
 - **Ideal For:**
-  - Production fitness applications
-  - Training platforms with 100-1,000 active users
-  - Small to medium teams
-  - Commercial training apps
+  - Commercial training platforms
+  - Sports science applications
+  - Apps with 100–1,000 active users
+  - Research groups running production studies
 
-#### **Enterprise - $799/month**
+#### **Enterprise — $799/month**
 
-For large-scale platforms and high-volume applications.
+For large-scale or data-intensive platforms where reliability, integration flexibility, and uptime guarantees are essential.
 
-- **Request Volume:** 100,000 requests/day (3M/month)
+- **Request Volume:** 100,000 requests/day (≈3M/month)
 - **Rate Limit:** 50 requests/second
 - **Burst Capacity:** 100 requests
-- **Support:** Priority email + phone/video support (4-hour response time)
+- **Support:** Priority email + scheduled phone or video support (4-hour response time)
 - **SLA:** 99.5% uptime commitment with service credits
-- **Documentation:** Full documentation + dedicated onboarding session
+- **Documentation:** Dedicated onboarding + technical integration review
 - **Additional Features:**
-  - Custom integration assistance
-  - Monthly usage reports and analytics
+  - Custom integration support
+  - Monthly usage and performance analytics
   - Dedicated account manager
-  - Algorithm version lock (optional)
+  - Algorithm version lock (optional, for long-term reproducibility)
 - **Ideal For:**
-  - Large fitness platforms (1,000+ active users)
-  - Professional sports teams and organizations
-  - Enterprise training systems
-  - High-volume commercial applications
+  - Professional sports analytics platforms
+  - Large-scale commercial training systems
+  - Research consortia and enterprise clients
+  - Organizations exceeding 1,000 active users
 
-#### **Custom/Volume Pricing**
+#### **Platform Partner License — from $1,500/month**
 
-For organizations requiring more than 100K requests/day, contact us for custom enterprise solutions:
+For strategic partners developing their own platforms or commercial applications powered by Athletica Workout Reserve algorithms. This license allows resale and platform embedding while maintaining Athletica as the backend computational core.
 
-- **Dedicated infrastructure** - Isolated deployment for your organization
-- **Custom SLA agreements** - Tailored uptime and response commitments
-- **Volume discounts** - Reduced per-request pricing at scale
-- **White-label options** - Subject to approval and licensing terms
-- **Multi-region deployment** - Deploy in your preferred AWS region
-- **Custom integrations** - Direct database access, webhooks, custom endpoints
+- **Request Volume:** 1M+ requests/month (customized to expected usage)
+- **Rate Limit:** Up to 200 requests/second (configurable)
+- **Burst Capacity:** 1,000 requests
+- **Support:** Priority email + direct Slack or video communication (2-hour response time)
+- **SLA:** 99.9% uptime commitment with service credits
+- **Documentation:** Full integration specs, versioning guidance, and joint technical review
+- **Commercial Features:**
+  - Right to embed and resell WR features within third-party platforms
+  - Co-branded integration ("Powered by Athletica WR")
+  - Private API key with extended usage analytics
+  - Integration sandbox environment for pre-deployment testing
+  - Dedicated onboarding and partnership contact
+  - Optional access to algorithm changelog and version pinning
+- **Ideal For:**
+  - Strategic partners and resellers (e.g., sports tech platforms)
+  - Commercial SaaS and sports analytics companies
+  - Institutions integrating WR into proprietary systems
+  - Teams needing co-development or private hosting options
+
+**Note:** Platform Partner licenses require a separate agreement covering branding, data privacy, and usage rights. Contact andrea@athletica.ai for details.
+
+#### **Custom / Volume Pricing**
+
+For organizations requiring more than 100K requests/day or custom integration solutions.
+
+- **Dedicated Infrastructure:** Private AWS Lambda and Gateway deployment
+- **Custom SLAs:** Tailored uptime and response time commitments
+- **Volume Discounts:** Reduced per-request cost at large scales
+- **White-Label Options:** Available under separate licensing terms
+- **Multi-Region Deployment:** Choose your preferred AWS region
+- **Custom Integrations:** Webhooks, database sync, or advanced data access
 
 **Contact:** andrea@athletica.ai
 
 ### Overage Pricing
 
 If you exceed your daily quota:
+
 - **Starter:** $0.05 per 100 additional requests
 - **Professional:** $0.04 per 100 additional requests
 - **Enterprise:** $0.03 per 100 additional requests
 
-Overage charges are billed monthly. Consider upgrading to a higher tier if you consistently exceed your quota.
+Overage charges are billed monthly. If you regularly exceed your quota, upgrading to a higher tier is more cost-effective.
 
 ### Cost Calculator
 
-Estimate your monthly costs:
+Estimate your monthly cost and appropriate plan:
 
-| Active Users | Avg. Sessions/User/Week | Est. Daily Requests | Recommended Tier | Monthly Cost |
-|--------------|-------------------------|---------------------|------------------|--------------|
-| 10-50 | 2-3 | 200-500 | Starter | $49 |
-| 50-200 | 3-4 | 500-2,000 | Starter | $49 |
-| 200-500 | 3-5 | 2,000-7,000 | Professional | $199 |
-| 500-2,000 | 4-5 | 7,000-30,000 | Professional | $199 |
-| 2,000-5,000 | 4-6 | 30,000-80,000 | Enterprise | $799 |
-| 5,000+ | 4-6 | 80,000+ | Custom | Contact us |
+| Active Users | Avg. Sessions/User/Week | Estimated Daily Requests | Recommended Tier | Monthly Cost |
+|--------------|-------------------------|--------------------------|------------------|--------------|
+| 10–50 | 2–3 | 200–500 | Starter | $49 |
+| 50–200 | 3–4 | 500–2,000 | Starter | $49 |
+| 200–500 | 3–5 | 2,000–7,000 | Professional | $199 |
+| 500–2,000 | 4–5 | 7,000–30,000 | Professional | $199 |
+| 2,000–5,000 | 4–6 | 30,000–80,000 | Enterprise | $799 |
+| 5,000+ | 4–6 | 80,000+ | Platform Partner / Custom | Contact us |
 
-*Assumes 3 API calls per session (1 session-ewm, periodic grand-max updates, 1 wr-predict)*
+*Estimates assume 3 API calls per session (one session EWM, one grand-max update, one WR compute).*
 
 ### Payment Terms
 
 - **Billing Cycle:** Monthly, billed in advance
-- **Payment Methods:** Invoice (ACH, wire transfer), credit card
-- **Free Trial:** 7-day trial available (Starter tier limits)
-- **Cancellation:** Cancel anytime - no long-term contracts required
+- **Payment Methods:** Invoice (ACH, wire transfer) or credit card
+- **Free Trial:** 7-day free trial (Starter-tier limits)
+- **Cancellation:** Cancel anytime — no long-term commitments
 - **Refunds:** No refunds for partial months (see Terms of Service)
+- **Currency:** All prices in USD
+- **Support Email:** andrea@athletica.ai
+
+### Licensing and Reseller Terms
+
+**Intellectual Property Ownership**
+
+All Workout Reserve (WR) algorithms, computational methods, API implementations, and related intellectual property remain the exclusive property of **Athletica Inc. and Andrea Zignoli**. No license, subscription, or partnership grants ownership or derivative rights to the underlying algorithms.
+
+**Permitted Use by API Customers**
+
+- **Starter, Professional, and Enterprise tiers** grant you the right to:
+  - Integrate WR metrics into your products and platforms
+  - Display WR data to your end users
+  - Use WR calculations as part of your commercial offerings
+  - Set your own pricing for products that incorporate WR metrics
+
+- **You may NOT:**
+  - Reverse engineer, decompile, or attempt to extract the WR algorithms
+  - Resell or redistribute direct API access to third parties
+  - Remove or obscure required attribution
+  - Create competing WR calculation services
+
+**Platform Partner and Reseller Rights**
+
+- **Platform Partner License holders** may:
+  - Embed WR functionality within their platforms
+  - Resell WR-powered features to their customers
+  - Co-brand integrations as "Powered by Athletica WR"
+  - Integrate WR into white-label or multi-tenant solutions
+
+- **Platform Partners require:**
+  - A signed Platform Partner Agreement
+  - Proper attribution in product documentation (not necessarily in UI)
+  - Compliance with data privacy and usage terms
+  - Annual renewal and usage reporting
+
+**Attribution Requirements**
+
+All tiers (except Custom/White-Label agreements) must include attribution to **"Athletica WR"** or **"Powered by Athletica WR"** in:
+
+- Product documentation, Terms of Service, or About page
+- API integration guides (for developer-facing products)
+- Marketing materials mentioning WR functionality (optional but encouraged)
+
+Attribution **does not** need to be displayed in the primary user interface unless specifically requested by the partner.
+
+**Data Privacy and Usage Rights**
+
+- **Your data remains yours:** You retain ownership of all training data submitted to the API.
+- **We do not sell your data:** Athletica will never sell client data to third parties.
+- **Aggregated research use:** Athletica may use anonymized, aggregated data for research and algorithm improvements (as detailed in the Privacy Policy).
+- **GDPR and compliance:** You are responsible for ensuring compliance with GDPR, CCPA, and other privacy regulations when collecting and submitting athlete data.
+
+**Resale and Commercial Use**
+
+- **Standard tiers (Starter, Professional, Enterprise):** You may integrate WR into your products and charge your customers. You may not resell direct API access.
+- **Platform Partner License:** You may resell WR-powered features and embed them in multi-tenant platforms. Requires signed agreement.
+- **Custom/White-Label:** Full resale and white-label rights available under separate terms.
+
+**Termination and IP Protection**
+
+Upon termination of your subscription:
+
+- API access is immediately revoked
+- You must cease using WR metrics in new calculations
+- You may retain historical WR data previously computed for your users
+- All algorithm access rights expire
+- Attribution requirements remain for any legacy integrations still in use
+
+**Enforcement**
+
+Violation of these terms, including reverse engineering attempts or unauthorized resale, will result in:
+
+- Immediate account suspension
+- Legal action to protect Athletica's intellectual property
+- Liability for damages as defined in the Terms of Service
+
+**Partnership Inquiries**
+
+For partnership opportunities beyond standard API access, including:
+
+- Co-development and joint ventures
+- White-label or private hosting
+- Academic or institutional licensing
+- Strategic integrations with major platforms
+
+**Contact:** andrea@athletica.ai
 
 ### Getting Started
 
