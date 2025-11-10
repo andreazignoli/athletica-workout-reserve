@@ -14,7 +14,7 @@ permalink: /api/guide
 
 ## Introduction
 
-The Athletica WR API allows you to compute Workout Reserve (WR) metrics from athletic training data. WR indicates how much reserve capacity an athlete has during exercise, helping optimize training intensity and prevent overtraining.
+The Athletica WR API allows you to compute Workout Reserve (WR) metrics from athletic training data. 
 
 ---
 
