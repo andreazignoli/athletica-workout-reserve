@@ -4,94 +4,136 @@ title: How to
 subtitle: Install the Athletica Workout Reserve Garmin Connect IQ App
 ---
 
-Follow these steps to set up and use the **Athletica Workout Reserve** app on your Garmin device. Each step is marked with a color-coded box to guide you through the process, distinguishing tasks on your phone, Garmin device, or other middle actions.
+Follow these steps to set up and use the **Athletica Workout Reserve** app on your Garmin device. Each step is marked with a color-coded box to guide you through the process, distinguishing tasks on your phone, Garmin device, or other actions.
 
 ---
 
+## Before You Begin
+
 {: .box-error}
-**Step 0: Verify compatibility**  
-Verify that your **Garmin** device is compatible with the Athletica Workout Reserve **Garmin Connect IQ** app [here](https://apps.garmin.com/apps/c9a93545-7db0-4a1b-b955-21db19edbf9d?tid=1).
+**⚠️ Active Athletica Account Required**
+The Workout Reserve app requires an active [Athletica](https://athletica.ai) subscription to access your personalized performance profile. A **free trial is available** at [athletica.ai](https://athletica.ai).
+
+{: .box-error}
+**Verify Device Compatibility**
+Confirm that your **Garmin** device is compatible with the Athletica Workout Reserve **Connect IQ** app [here](https://apps.garmin.com/apps/c9a93545-7db0-4a1b-b955-21db19edbf9d?tid=1).
 
 {: .box-note}
-**Step 1: Ensure Proximity**  
+**What You'll Need**
+- Active Athletica account ([sign up here](https://athletica.ai))
+- Compatible Garmin device
+- Smartphone (Android or iOS) with Garmin Connect app
+
+---
+
+## 📱 Phone Setup
+
+{: .box-note}
+**Step 1: Ensure Proximity**
 Make sure your **phone** and **Garmin** device are nearby.
 
 {: .box-warning}
-**Step 2: Install Necessary Apps**  
+**Step 2: Install Garmin Apps**
 Download and install the **Garmin Connect** and **Garmin Connect IQ** apps on your **phone** (works for both Android and iOS).
-You can find the app [here](https://apps.garmin.com/apps/c9a93545-7db0-4a1b-b955-21db19edbf9d?tid=0). 
 
 {: .box-warning}
-**Step 3: Search for the App**  
-In the Connect IQ app, search for the **Athletica Workout Reserve** app.
+**Step 3: Find Athletica Workout Reserve**
+In the Connect IQ app, search for **Athletica Workout Reserve** or access it directly [here](https://apps.garmin.com/apps/c9a93545-7db0-4a1b-b955-21db19edbf9d?tid=0).
 
 {: .box-warning}
-**Step 4: Select the Correct Device**  
-Ensure the selected device in the app is your **Garmin** device.
+**Step 4: Select Your Device**
+Ensure the selected device in the Connect IQ app is your **Garmin** device.
 
 {: .box-warning}
-**Step 5: Install the App**  
+**Step 5: Install the App**
 Install the **Athletica Workout Reserve** app via the Connect IQ app.
 
 {: .box-warning}
-**Step 6: Grant Permissions**  
+**Step 6: Grant Permissions**
 Agree to any **Bluetooth permissions** requested during the setup.
 
 {: .box-warning}
-**Step 7: Adjust Settings**  
-Modify settings as described in the app details or guide for optimal performance.
+**Step 7: Configure App Settings**
+Review and adjust app settings as needed for optimal performance.
 
 {: .box-warning}
-**Step 8: Verify Installation**  
-Verify that the **Workout Reserve** field is available in your data fields.
+**Step 8: Verify Installation**
+Confirm that the **Workout Reserve** data field is now available in your Garmin data fields.
+
+---
+
+## ⌚ Garmin Device Setup
 
 {: .box-success}
-**Step 9: Switch to Your Garmin device**  
-Access your Garmin computer to finalize the setup.
+**Step 9: Access Your Garmin Device**
+Switch to your **Garmin device** to configure the data field.
 
 {: .box-success}
-**Step 10: Add Data Field**  
-Add the **Workout Reserve** field to an activity profile.  
-You can choose to display it as a single page or as part of another data screen.
+**Step 10: Add Workout Reserve Data Field**
+Add the **Workout Reserve** field to an activity profile. You can display it as a full page or as part of another data screen.
 
 {: .box-success}
-**Step 11: Configure Data Screens**  
-Navigate to:  
-`Data Screens -> Connect IQ Data Screens -> Select Workout Reserve`  
+**Step 11: Configure Data Screens**
+Navigate to: **Data Screens → Connect IQ Data Screens → Select Workout Reserve**
 Save your changes.
 
+---
+
+## 🔄 Sync & Login
+
 {: .box-warning}
-**Step 12: Log In to Athletica**  
-A request is sent to your **phone** to open the **Garmin Connect** app and log in to your **Athletica account**.
+**Step 12: Log In to Athletica**
+A request will be sent to your **phone** to open the **Garmin Connect** app. Log in with your **Athletica account** credentials.
 
 {: .box-error}
-**Step 13: Sync Workout Reserve**  
-Wait for the tones indicating that **Workout Reserve is synced** to your device. This process may take up to 15 minutes.
+**Step 13: Wait for Initial Sync**
+Listen for the tones indicating that **Workout Reserve has synced** to your device.
 
-{: .box-error}
-**Step 14: Resync Before Sessions**  
-Before each training session, ensure your Workout Reserve numbers are synced to your **Garmin** device.
+**⏱️ Note:** The first sync can take up to **15 minutes**. Be patient!
+
+---
+
+## ✅ Ready to Use
 
 {: .box-success}
-**Step 15: Done!**  
-The setup is complete. You're now ready to use **Workout Reserve** in real-time.
+**Step 14: You're All Set!**
+Setup is complete! You're now ready to use **Workout Reserve** in real-time during your training sessions.
+
+{: .box-error}
+**🔄 Important: Resync Before Each Session**
+Before each training session, ensure your Workout Reserve data is synced to your **Garmin** device for the most accurate, up-to-date performance metrics.
 
 ---
 
-### Legend:
-- {: .box-note} **Gray Boxes**: Middle tasks that require your attention.
-- {: .box-warning} **Yellow Boxes**: Tasks performed on your **phone**.
-- {: .box-success} **Green Boxes**: Tasks performed on your **Garmin** device.
-- {: .box-error} **Red Boxes**: Possible blocker or critical issue.
+## Color-Coded Step Guide
+
+The steps above use color-coded boxes to help you quickly identify where each action takes place:
+
+- **Gray Boxes** {: .box-note}: General tasks or informational steps
+- **Yellow Boxes** {: .box-warning}: Tasks performed on your **phone**
+- **Green Boxes** {: .box-success}: Tasks performed on your **Garmin device**
+- **Red Boxes** {: .box-error}: Critical requirements or important warnings
 
 ---
 
-By following these steps, you can effortlessly integrate the **Athletica Workout Reserve** into your Garmin Edge experience. Enjoy tracking your fitness journey!
+## Need Help?
+
+Having trouble? Check out these resources:
+
+- **[FAQ Page]({{ site.baseurl }}/2024-02-01-FAQ)** - Common questions and answers
+- **[Video Tutorial](#video-tutorial)** - Watch the full setup process
+- **[Athletica Support](https://athletica.ai)** - Contact the Athletica team
 
 ---
 
-# Video resource
+## Video Tutorial {#video-tutorial}
+
+Watch the complete setup process:
 
 [![Workout Reserve Video](https://img.youtube.com/vi/4gMKj3ggC5k/maxresdefault.jpg)](https://www.youtube.com/watch?v=4gMKj3ggC5k)
+
+---
+
+Happy training! 🚀
 
 
