@@ -109,10 +109,10 @@ Before each training session, ensure your Workout Reserve data is synced to your
 
 The steps above use color-coded boxes to help you quickly identify where each action takes place:
 
-- **Gray Boxes** {: .box-note}: General tasks or informational steps
-- **Yellow Boxes** {: .box-warning}: Tasks performed on your **phone**
-- **Green Boxes** {: .box-success}: Tasks performed on your **Garmin device**
-- **Red Boxes** {: .box-error}: Critical requirements or important warnings
+- **Gray Boxes**: General tasks or informational steps
+- **Yellow Boxes**: Tasks performed on your **phone**
+- **Green Boxes**: Tasks performed on your **Garmin device**
+- **Red Boxes**: Critical requirements or important warnings
 
 ---
 
