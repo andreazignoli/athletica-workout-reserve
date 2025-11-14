@@ -14,7 +14,22 @@ permalink: /api/guide
 
 ## Introduction
 
-The Athletica WR API allows you to compute Workout Reserve (WR) metrics from athletic training data. 
+The Athletica WR API allows you to compute Workout Reserve (WR) metrics from athletic training data.
+
+### Data Requirements
+
+**Sampling Rate:** The algorithm works best with **1 Hz data** (one data point per second). While the implementation is agnostic to sampling rates, we strongly recommend 1-second intervals for optimal accuracy.
+
+**Timestamps:** Timestamps should represent **seconds from the beginning of the activity**, starting at 0. For example, a 10-minute session would have timestamps from 0 to 600.
+
+**Handling Pauses:** If there are pauses during the activity (e.g., rest intervals, traffic lights), **include these pauses with value=0**. Do not skip timestamps. This ensures the time-based EWM calculations remain accurate.
+
+**Sport-Specific Metrics:**
+- **Cycling & Rowing:** Use **mechanical power output** (watts)
+- **Running:** Use **speed** (m/s or km/h - be consistent)
+- **Football & Team Sports:** Use **metabolic power** (watts) for best results
+
+The algorithm is flexible and can work with any continuous effort metric, but the above recommendations are based on extensive validation in each sport.
 
 ---
 
@@ -23,10 +38,10 @@ The Athletica WR API allows you to compute Workout Reserve (WR) metrics from ath
 ### Base URL
 
 ```
-https://YOUR_API_ID.execute-api.YOUR_REGION.amazonaws.com/prod
+https://3jqargtyza.execute-api.eu-central-1.amazonaws.com/prod
 ```
 
-Your API administrator will provide you with the complete base URL. 
+This is the production API endpoint hosted in the EU (Frankfurt region). 
 
 ### Authentication
 
@@ -38,11 +53,13 @@ x-api-key: YOUR_API_KEY_HERE
 
 **Example:**
 ```bash
-curl -X POST https://api.example.com/prod/session-ewm \
-  -H "x-api-key: your-api-key-here" \
+curl -X POST https://3jqargtyza.execute-api.eu-central-1.amazonaws.com/prod/session-ewm \
+  -H "x-api-key: YOUR_API_KEY_HERE" \
   -H "Content-Type: application/json" \
   -d @request.json
 ```
+
+Replace `YOUR_API_KEY_HERE` with the API key provided to you.
 
 ---
 
@@ -93,6 +110,7 @@ Analyze a single training session to determine maximum effort values.
   "player_id": "athlete_123",
   "session_id": "session_456",
   "max_ewm_per_tau": {
+    "6": 270.15,
     "12": 284.52,
     "30": 299.68,
     "60": 305.77,
@@ -110,7 +128,7 @@ Analyze a single training session to determine maximum effort values.
 
 | Field | Description |
 |-------|-------------|
-| `max_ewm_per_tau` | Maximum effort values across different time scales (12s to 3600s) |
+| `max_ewm_per_tau` | Maximum effort values across different time scales (6s to 3600s) |
 
 **Note:** Save the `max_ewm_per_tau` values - you'll need them for Endpoint 2.
 
@@ -131,6 +149,7 @@ Calculate an athlete's performance ceiling across multiple training sessions.
     {
       "session_id": "session_456",
       "max_ewm_per_tau": {
+        "6": 270.15,
         "12": 284.52,
         "30": 299.68,
         ...
@@ -139,6 +158,7 @@ Calculate an athlete's performance ceiling across multiple training sessions.
     {
       "session_id": "session_789",
       "max_ewm_per_tau": {
+        "6": 435.0,
         "12": 450.0,
         "30": 440.0,
         ...
@@ -161,6 +181,7 @@ Calculate an athlete's performance ceiling across multiple training sessions.
 {
   "player_id": "athlete_123",
   "grand_max_ewms": {
+    "6": 435.0,
     "12": 450.0,
     "30": 440.0,
     "60": 450.0,
@@ -204,6 +225,7 @@ Calculate Workout Reserve during a training session.
     {"timestamp": 2, "value": 240}
   ],
   "grand_max_ewms": {
+    "6": 435.0,
     "12": 450.0,
     "30": 440.0,
     "60": 450.0,
@@ -591,8 +613,8 @@ Example:
 import requests
 
 # Configuration
-API_URL = "https://your-api-id.execute-api.region.amazonaws.com/prod"
-API_KEY = "your-api-key-here"
+API_URL = "https://3jqargtyza.execute-api.eu-central-1.amazonaws.com/prod"
+API_KEY = "YOUR_API_KEY_HERE"
 HEADERS = {
     "x-api-key": API_KEY,
     "Content-Type": "application/json"
@@ -678,8 +700,8 @@ else:
 ```javascript
 const axios = require('axios');
 
-const API_URL = 'https://your-api-id.execute-api.region.amazonaws.com/prod';
-const API_KEY = 'your-api-key-here';
+const API_URL = 'https://3jqargtyza.execute-api.eu-central-1.amazonaws.com/prod';
+const API_KEY = 'YOUR_API_KEY_HERE';
 
 const headers = {
   'x-api-key': API_KEY,
@@ -790,10 +812,14 @@ async function main() {
 
 ### Data Collection
 
-- Collect data at 1-second intervals for optimal results
-- Start timestamps at 0 or the beginning of the effort
-- Use consistent units (watts for power data)
-- Ensure data is properly calibrated
+- **Collect data at 1 Hz (1-second intervals)** for optimal results
+- **Start timestamps at 0** at the beginning of the activity
+- **Include pauses with value=0** - do not skip timestamps during rest periods
+- **Use sport-specific metrics:**
+  - Cycling/Rowing: Mechanical power (watts)
+  - Running: Speed (m/s or km/h, be consistent)
+  - Football/Team Sports: Metabolic power (watts)
+- **Ensure data is properly calibrated** (power meters, GPS devices, etc.)
 
 ### Baseline Establishment
 
