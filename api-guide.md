@@ -122,7 +122,7 @@ Analyze a single training session to determine maximum effort values.
     "1800": 316.72,
     "3600": 317.11
   },
-  "api_version": "1.0.0"
+  "api_version": "1.1.0"
 }
 ```
 
@@ -194,7 +194,7 @@ Calculate an athlete's performance ceiling across multiple training sessions.
     "3600": 480.0
   },
   "num_sessions": 2,
-  "api_version": "1.0.0"
+  "api_version": "1.1.0"
 }
 ```
 
@@ -256,8 +256,15 @@ Calculate Workout Reserve during a training session.
   "timestamps": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
   "WR_reserve": [0.73, 0.65, 0.55, 0.44, 0.32, 0.25, 0.27, 0.30, 0.34, 0.37, 0.41],
   "limiting_tau": [3600, 3600, 3600, 1200, 1200, 120, 120, 120, 120, 120, 120],
-  "api_version": "1.0.0",
-  "wr_version": "1.0.0"
+  "contributions": {
+    "AN_ALA_perc": 0.0,
+    "AN_LA_perc": 0.0,
+    "AE_MAX_perc": 45.8,
+    "AE_THRES_perc": 27.3,
+    "AE_perc": 26.9
+  },
+  "api_version": "1.1.0",
+  "wr_version": "3.0.0"
 }
 ```
 
@@ -266,6 +273,12 @@ Calculate Workout Reserve during a training session.
 | `timestamps` | Timestamps from your data (seconds) |
 | `WR_reserve` | Workout Reserve at each timestamp (0-1 scale) |
 | `limiting_tau` | Which physiological system is most stressed at each timestamp |
+| `contributions` | Energy system contributions as percentages (sum to 100%) |
+| `contributions.AN_ALA_perc` | Anaerobic Alactic % (tau ≤ 12s, neuromuscular/power) |
+| `contributions.AN_LA_perc` | Anaerobic Lactic % (tau = 30-60s, anaerobic capacity) |
+| `contributions.AE_MAX_perc` | Aerobic Max % (tau = 120-300s, VO2max) |
+| `contributions.AE_THRES_perc` | Aerobic Threshold % (tau = 600-1200s, lactate threshold) |
+| `contributions.AE_perc` | Aerobic % (tau = 1800-3600s, endurance) |
 
 #### Interpreting Results
 
@@ -776,7 +789,7 @@ async function main() {
 ```json
 {
   "error": "Detailed error message",
-  "api_version": "1.0.0"
+  "api_version": "1.1.0"
 }
 ```
 
@@ -792,7 +805,7 @@ async function main() {
 ```json
 {
   "error": "Validation error: Missing required fields: player_id",
-  "api_version": "1.0.0"
+  "api_version": "1.1.0"
 }
 ```
 → Ensure all required fields are present in your request.
@@ -801,7 +814,7 @@ async function main() {
 ```json
 {
   "error": "Internal error: data_points cannot be empty",
-  "api_version": "1.0.0"
+  "api_version": "1.1.0"
 }
 ```
 → Your `data_points` array must contain at least one data point.
