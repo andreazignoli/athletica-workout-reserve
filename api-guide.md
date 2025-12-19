@@ -6,7 +6,7 @@ permalink: /api/guide
 
 # Athletica WR API - Client Guide
 
-**API Version:** 1.0.0
+**API Version:** 1.1.1
 **Contact:** andrea@athletica.ai
 **Copyright © 2025 Andrea Zignoli and Athletica.ai**
 
@@ -22,7 +22,7 @@ The Athletica WR API allows you to compute Workout Reserve (WR) metrics from ath
 
 **Timestamps:** Timestamps should represent **seconds from the beginning of the activity**, starting at 0. For example, a 10-minute session would have timestamps from 0 to 600.
 
-**Handling Pauses:** If there are pauses during the activity (e.g., rest intervals, traffic lights), **include these pauses with value=0**. Do not skip timestamps. This ensures the time-based EWM calculations remain accurate.
+**Handling Pauses:** The API automatically handles timestamp gaps by filling missing seconds with value=0. You can send data with or without gaps - the server will ensure continuous timestamp sequences for accurate EWM calculations. However, for optimal data quality, we recommend including pauses with value=0 in your client data when possible.
 
 **Sport-Specific Metrics:**
 - **Cycling & Rowing:** Use **mechanical power output** (watts)
@@ -1278,7 +1278,7 @@ When reporting issues, please include:
 
 ## Versioning
 
-Current API version: **1.0.0**
+Current API version: **1.1.1**
 
 All responses include version information:
 - `api_version`: Overall API version
