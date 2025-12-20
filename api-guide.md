@@ -16,20 +16,47 @@ permalink: /api/guide
 
 The Athletica WR API allows you to compute Workout Reserve (WR) metrics from athletic training data.
 
-### Data Requirements
+## Data Requirements
 
-**Sampling Rate:** The algorithm works best with **1 Hz data** (one data point per second). While the implementation is agnostic to sampling rates, we strongly recommend 1-second intervals for optimal accuracy.
+### **Sampling Rate**
+The algorithm performs best with **1 Hz data** (one data point per second).  
+Although the implementation is sampling-rate agnostic, **1-second intervals are strongly recommended** to ensure optimal accuracy and stable EWM behavior.
 
-**Timestamps:** Timestamps should represent **seconds from the beginning of the activity**, starting at 0. For example, a 10-minute session would have timestamps from 0 to 600.
+---
 
-**Handling Pauses:** The API automatically handles timestamp gaps by filling missing seconds with value=0. You can send data with or without gaps - the server will ensure continuous timestamp sequences for accurate EWM calculations. However, for optimal data quality, we recommend including pauses with value=0 in your client data when possible.
+### **Timestamps (Critical Requirement)**
+Timestamps **MUST represent elapsed seconds from the beginning of the provided data stream**, starting at **0**.
 
-**Sport-Specific Metrics:**
-- **Cycling & Rowing:** Use **mechanical power output** (watts)
-- **Running:** Use **speed** (m/s or km/h - be consistent)
-- **Football & Team Sports:** Use **metabolic power** (watts) for best results
+- Timestamps and the associated metric **MUST be perfectly synchronized**.
+- **If an activity is trimmed, segmented, or partially extracted**, timestamps **MUST be reindexed to start from 0**.
+  - ❌ **Incorrect:** Using original timestamps after cutting the activity (this introduces an artificial delay).
+  - ✅ **Correct:** Reset timestamps so the first sample is `t = 0`.
 
-The algorithm is flexible and can work with any continuous effort metric, but the above recommendations are based on extensive validation in each sport.
+> **Rule:** Every data payload represents a *new activity start*.  
+> Therefore, timestamps must always start at `0`.
+
+Failure to reset timestamps after cutting an activity **will result in incorrect temporal alignment and degraded algorithm output**.
+
+---
+
+### **Handling Pauses**
+The API automatically enforces **continuous 1-second timestamps**:
+
+- Missing seconds are filled internally with `value = 0`
+- Data may be sent **with or without gaps**
+
+For best data quality and transparency, we **recommend explicitly including pauses** in client-side data as `value = 0` whenever possible.
+
+---
+
+### **Sport-Specific Metrics**
+Use the following effort metrics for best performance:
+
+- **Cycling & Rowing:** Mechanical power (watts)
+- **Running:** Speed (m/s or km/h — units must be consistent)
+- **Football & Team Sports:** Metabolic power (watts)
+
+The algorithm can operate on any continuous effort metric, but the above recommendations are based on extensive sport-specific validation.
 
 ---
 
