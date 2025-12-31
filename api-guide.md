@@ -886,10 +886,110 @@ async function main() {
 
 ## Pricing
 
-**Choose the model that fits your business:**
+**Choose the model that fits your needs:**
+
+- **Research Tier** → Free access for academic research and scientific validation (non-commercial use only)
 - **Direct API Access** → Pay per request volume (best for developers and individual platforms)
 - **Platform Partnership** → Pay per team/athlete (best for sports software providers and resellers)
 - **Strategic Partnership** → Custom arrangements (best for broadcasting, gaming, major platforms)
+
+---
+
+### Research Tier — Free for Academic Research
+
+*For research institutions and academic initiatives aimed at endorsing, validating, and testing the Athletica Workout Reserve algorithm*
+
+**Best for:** Universities, research institutions, academic studies, sports science research, algorithm validation projects
+
+#### **Access Requirements**
+
+This tier is exclusively available to:
+
+- Accredited research institutions (universities, research centers, academic hospitals)
+- Academic research initiatives with clearly defined scientific objectives
+- Sports science validation studies
+- Non-commercial research projects
+
+#### **Application Process**
+
+To apply for Research Tier access:
+
+1. **Contact:** Email <andrea@athletica.ai> with subject line "Research Tier Application"
+2. **Submit Proposal:** Include a detailed research proposal containing:
+   - **Principal Investigator(s):** Name, title, institution, contact information
+   - **Institution Details:** Name, department, affiliation
+   - **Research Objectives:** Clear statement of research aims and hypotheses
+   - **Scope of Work:** Detailed methodology, expected data volume, timeline
+   - **Sample Size:** Number of athletes/participants, expected API usage
+   - **Scientific Merit:** How this research will contribute to WR validation or sports science
+   - **Dissemination Plan:** Expected publications, conferences, or open-access sharing
+   - **Ethics Approval:** IRB/ethics committee approval status or timeline
+3. **Review Process:** Proposals are reviewed within 7-10 business days
+4. **API Access:** Approved projects receive Enterprise-tier API key valid for up to 90 days
+
+#### **Tier Specifications**
+
+- **Request Volume:** 100,000 requests/day (≈3M/month) — Enterprise-tier access
+- **Rate Limit:** 50 requests/second, 100 burst
+- **Support:** Email support (48h response)
+- **SLA:** Best effort
+- **Duration:** Up to 90 days (renewable upon request with progress report)
+- **Cost:** FREE
+
+#### **Terms and Restrictions**
+
+**✅ Permitted Uses:**
+
+- Academic research and scientific studies
+- Algorithm validation and testing
+- Sports science research publications
+- Educational purposes (teaching, coursework demonstrations)
+- Non-commercial pilot studies
+- Conference presentations and academic publications
+
+**❌ Prohibited Uses:**
+
+- Commercial applications or revenue-generating services
+- Resale or redistribution of API access or WR metrics
+- Integration into commercial products or platforms
+- Consulting services or paid coaching applications
+- White-label or SaaS products
+- Any use that generates direct or indirect revenue
+
+**Additional Requirements:**
+
+- **Attribution:** All publications, presentations, and reports must acknowledge:
+  *"Workout Reserve metrics provided by Athletica.ai (<https://athletica.ai>)"*
+- **Publications:** Share preprints or final publications using WR data with Athletica
+- **Data Usage:** Comply with ethical research standards and data privacy regulations (GDPR, HIPAA, etc.)
+- **No Reverse Engineering:** Algorithm analysis is permitted for research validation, but reverse engineering to replicate or compete is strictly prohibited
+- **Progress Reports:** For renewals beyond 90 days, submit a brief progress report
+
+#### **Renewal and Extension**
+
+Research Tier access can be extended beyond 90 days by:
+
+1. Submitting a progress report documenting research activities and preliminary findings
+2. Providing justification for continued access (ongoing data collection, extended study timeline)
+3. Confirming continued non-commercial use
+
+Extensions are granted in 90-day increments, subject to approval.
+
+#### **Transitioning to Commercial Use**
+
+If your research leads to commercial applications:
+
+- Research Tier access must be terminated
+- Transition to appropriate paid tier (Direct API Access, Platform Partnership, or Strategic Partnership)
+- Contact <andrea@athletica.ai> to discuss commercialization options
+- Athletica is open to collaboration and partnership discussions for promising research outcomes
+
+#### **Publication and IP Rights**
+
+- **Your Research:** You retain full ownership of your research findings, methodologies, and publications
+- **WR Algorithm:** Athletica retains all intellectual property rights to the WR algorithm
+- **Derivative Works:** Research outputs (papers, analyses, insights) are yours; algorithm implementations remain Athletica's property
+- **Open Access Encouraged:** We encourage open-access publication of research findings to advance sports science
 
 ---
 
